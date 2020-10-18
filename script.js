@@ -54,29 +54,23 @@ function main() {
 function sockMerchant(n, arr) {
   arr.forEach((item, index, array) => {
     if (checkItemInMap(item)) {
-      //
-      //   console.log(`Item: ${item}, TRUE`);
       let value = map.get(item);
       value = value + 1;
       map.set(item, value);
     } else {
-      //
-      //   console.log(`Item: ${item}, FALSE`);
       map.set(item, 1);
     }
   });
 
   map.forEach((values, keys) => {
-    // console.log(`Key: ${keys} => Value: ${values}`);
+    let pair = 0;
 
     if (values >= 1) {
-      let pair = Math.floor(values / 2);
+      pair = Math.floor(values / 2);
       maxPair += pair;
-      // console.log(pair);
     }
   });
 
-  // console.log(`Max Pair: ${maxPair}`);
   return maxPair;
 }
 
@@ -87,9 +81,7 @@ function sockMerchant(n, arr) {
  * @return {boolean} TRUE/FALSE respectively if key in map exists or not.
  */
 function checkItemInMap(item) {
-  if (map.has(item) == false) {
-    return false;
-  } else {
-    return true;
-  }
+  if (map.has(item)) return true;
+
+  return false;
 }
